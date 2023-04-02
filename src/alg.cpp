@@ -15,20 +15,20 @@ int Priora(char x) {
       return 3;
     default:
       return -1;
-    } 
+    }
 }
 std::string infx2pstfx(std::string inf) {
   std::string rez;
   TStack<char, 100>stack1;
   for (auto& x : inf) {
     int p = Priora(x);
-    if (p == -1)
+    if (p == -1) {
       rez = rez + x + ' ';
-    else {
+    } else {
       char elem = stack1.get();
-      if (p == 0 || Priora(elem) < p || stack1.isEmpty())
+      if (p == 0 || Priora(elem) < p || stack1.isEmpty()) {
         stack1.push(x);
-      else {
+      } else {
         if (x == ')') {
           while (Priora(elem) >= p) {
             rez = rez + elem + ' ';
@@ -36,8 +36,7 @@ std::string infx2pstfx(std::string inf) {
             elem = stack1.get();
           }
           stack1.pop();
-        }
-        else {
+        } else {
           while (Priora(elem) >= p) {
             rez = rez + elem + ' ';
             stack1.pop();
@@ -46,9 +45,9 @@ std::string infx2pstfx(std::string inf) {
           stack1.push(x);
         }
       }
-    }  
+    }
   }
-  while (! stack1.isEmpty()) {
+  while (!stack1.isEmpty()) {
     rez = rez + stack1.get() + ' ';
     stack1.pop();
   }
