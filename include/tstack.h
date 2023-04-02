@@ -18,10 +18,7 @@ class TStack {
         throw std::string("Full");
     }
     T get() const {
-      if (isEmpty())
-        throw std::string("Empty");
-      else
-        return arr[top];
+      return arr[top];
     }
     T pop() {
       if (isEmpty())
