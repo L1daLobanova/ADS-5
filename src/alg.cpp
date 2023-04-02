@@ -18,7 +18,7 @@ int Priora(char x) {
     }
 }
 std::string infx2pstfx(std::string inf) {
-  std::string rez;
+  std::string rez, rez1;
   TStack<char, 100>stack1;
   for (auto& x : inf) {
     int p = Priora(x);
@@ -51,7 +51,6 @@ std::string infx2pstfx(std::string inf) {
     rez = rez + stack1.get() + ' ';
     stack1.pop();
   }
-  std::strig rez1 = "";
   for (int i = 0; i < rez.size() - 1; i++)
     rez1 += rez[i];
   return rez1;
@@ -85,7 +84,7 @@ int eval(std::string pref) {
         continue;
       } else {
         rez += pref[i];
-        stack1.push(atoi(num.c_str()));
+        stack1.push(atoi(rez.c_str()));
         rez = "";
       }
     } else {
